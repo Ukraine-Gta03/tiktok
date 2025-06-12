@@ -3,803 +3,784 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Посібник для Ігрових Помічників</title>
-    <link rel="icon" href="https://lh6.googleusercontent.com/vsgFDIl-7by1Xh0AiOOpcwUrm9h0AEJ0ang8_YSpMCaZ_z5eS7xDaj19tXYi4a442CLUeX8_jWV6QHk3zK4fbByy0EU2lVj6WsLLtzuq9yOUTaF_RWS_aiPQdOB6zUcdH2FDqH4lKEg=w16383" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <title>Дарина Бабусь| Ukraine GTA!</title>
+    <link rel="icon" href="https://cdn.imgpile.com/f/zuWPKdb_xl.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+        /* CSS Змінні для легкого та централізованого керування стилями */
         :root {
-            --primary-dark: #101015;
-            --secondary-dark: #1b1b22;
-            --accent-color-light: #87CEEB;
-            --accent-color-dark: #1E90FF;
-            --text-light: #ecf0f1;
-            --text-muted: #bdc3c7;
-            --border-color: #2a2a35;
-            --translucent-dark: rgba(16, 16, 21, 0.85);
-            --translucent-secondary: rgba(27, 27, 34, 0.85);
-            --translucent-light-dark: rgba(30, 30, 40, 0.85);
-            --translucent-primary-dark-strong: rgba(16, 16, 21, 0.95);
+            --tiktok-red: #FE2C55; /* Основний акцентний червоний */
+            --tiktok-blue: #25F4EE; /* Додатковий акцентний блакитний */
+            --tiktok-dark-bg: #0A0A0A; /* Дуже темний фон сторінки */
+            --tiktok-section-bg: #151515; /* Фон секцій, трохи світліший за основний */
+            --tiktok-element-bg: #202020; /* Фон для внутрішніх елементів (параграфи, галерея) */
+            --tiktok-light-text: #FFFFFF; /* Колір світлого тексту */
+            --tiktok-grey-text: #B0B0B0; /* Колір сірого тексту для деталей */
+
+            --gradient-primary: linear-gradient(135deg, var(--tiktok-red) 0%, var(--tiktok-blue) 100%);
+            --gradient-secondary: linear-gradient(90deg, var(--tiktok-blue) 0%, #00C0B0 100%);
+
+            --shadow-intensity-high: rgba(0, 0, 0, 0.7);
+            --shadow-intensity-medium: rgba(0, 0, 0, 0.4);
+            --shadow-intensity-low: rgba(255, 255, 255, 0.08); /* Легке світіння для контуру */
+
+            --border-radius-large: 40px; /* Дуже велике заокруглення */
+            --border-radius-medium: 25px; /* Середнє заокруглення */
+            --border-radius-small: 15px; /* Мале заокруглення */
+
+            --transition-duration-fast: 0.3s;
+            --transition-duration-medium: 0.5s;
+            --transition-duration-slow: 0.8s;
         }
 
+        /* --- Основні налаштування тіла сторінки --- */
         body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: var(--primary-dark);
-            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .top-section-background {
-            background-image: url('https://ukraine-gta.com.ua/images/pages/main/news/update-2-9.webp');
-            background-size: cover;
-            background-position: center top;
-            background-repeat: no-repeat;
-            height: 550px;
-            position: relative;
+            background-color: var(--tiktok-dark-bg);
+            color: var(--tiktok-light-text);
+            line-height: 1.8; /* Збільшений міжрядковий інтервал для кращої читабельності */
+            overflow-x: hidden; /* Запобігаємо горизонтальному прокручуванню */
             display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh; /* Мінімальна висота viewport */
+            padding: 40px 0; /* Зовнішній відступ для контейнера */
+            box-sizing: border-box;
+            position: relative;
+            animation: fadeInPage var(--transition-duration-slow) ease-out forwards; /* Плавний вхід сторінки */
         }
 
-        .top-section-background::before {
+        @keyframes fadeInPage {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Декоративні фонові елементи для всього тіла */
+        body::before, body::after {
             content: '';
+            position: absolute;
+            width: 120vw; /* Більші розміри для розширеного ефекту */
+            height: 120vh;
+            background: linear-gradient(45deg, rgba(254, 44, 85, 0.03), rgba(37, 244, 238, 0.03));
+            pointer-events: none;
+            z-index: -1;
+            animation: subtleBackgroundFlow 40s infinite alternate ease-in-out; /* Довший та плавніший рух */
+        }
+
+        body::before {
+            top: -10vh;
+            left: -10vw;
+            transform: skewY(-7deg); /* Більший нахил */
+            transform-origin: top left;
+        }
+
+        body::after {
+            bottom: -10vh;
+            right: -10vw;
+            transform: skewY(7deg);
+            transform-origin: bottom right;
+            animation-delay: 5s; /* Затримка для асинхронності */
+        }
+
+        @keyframes subtleBackgroundFlow {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            50% { transform: translate(70px, 70px) scale(1.03); opacity: 0.9; }
+            100% { transform: translate(0, 0) scale(1); opacity: 1; }
+        }
+
+        /* --- Основний контейнер сторінки --- */
+        .container {
+            width: 100%;
+            max-width: 680px; /* Оптимальна ширина для елегантного вигляду */
+            background-color: var(--tiktok-section-bg); /* Темний фон для вмісту */
+            min-height: 100vh;
+            box-shadow: 0 0 60px var(--shadow-intensity-high); /* Сильна тінь для "глибини" */
+            position: relative;
+            z-index: 1;
+            border: 3px solid rgba(255, 255, 255, 0.1); /* Товстіша рамка */
+            border-radius: var(--border-radius-large); /* Заокруглені кути контейнера */
+            overflow: hidden; /* Обрізає виступаючі елементи */
+            padding-bottom: 20px; /* Відступ внизу контейнера */
+        }
+
+        /* --- Анімовані фонові елементи всередині контейнера (TikTok-стиль) --- */
+        .tiktok-bg-shapes {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.9) 70%, var(--primary-dark) 100%);
-            z-index: 1;
-        }
-
-        header {
             width: 100%;
-            padding: 20px 0;
-            text-align: center;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            opacity: 0.2; /* Середня прозорість */
+            pointer-events: none; /* Щоб не заважати клікам */
+            filter: saturate(180%) brightness(120%); /* Більш насичені та яскраві */
+        }
+
+        .tiktok-bg-shapes div {
+            position: absolute;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            filter: blur(20px); /* Максимальне розмиття */
+            animation: moveShapes 35s infinite alternate ease-in-out; /* Ще довший цикл */
+            opacity: 0.8; /* Більш непрозорі */
+        }
+
+        /* Розміри та позиції фонових фігур */
+        .tiktok-bg-shapes div:nth-child(1) { width: 280px; height: 280px; top: 10%; left: -120px; animation-duration: 35s; animation-delay: 0s; }
+        .tiktok-bg-shapes div:nth-child(2) { width: 200px; height: 200px; top: 60%; right: -100px; animation-duration: 28s; animation-delay: 2s; }
+        .tiktok-bg-shapes div:nth-child(3) { width: 350px; height: 350px; bottom: -180px; left: 5%; animation-duration: 40s; animation-delay: 4s; }
+        .tiktok-bg-shapes div:nth-child(4) { width: 150px; height: 150px; top: 25%; left: 90%; animation-duration: 32s; animation-delay: 1s; }
+        .tiktok-bg-shapes div:nth-child(5) { width: 250px; height: 250px; bottom: 5%; left: -150px; animation-duration: 38s; animation-delay: 3s; }
+        .tiktok-bg-shapes div:nth-child(6) { width: 120px; height: 120px; top: -70px; right: 15%; animation-duration: 25s; animation-delay: 5s; }
+        .tiktok-bg-shapes div:nth-child(7) { width: 190px; height: 190px; bottom: -90px; right: 10%; animation-duration: 30s; animation-delay: 6s; }
+        .tiktok-bg-shapes div:nth-child(8) { width: 100px; height: 100px; top: 40%; left: 0%; animation-duration: 20s; animation-delay: 7s; } /* Нова фігура */
+        .tiktok-bg-shapes div:nth-child(9) { width: 230px; height: 230px; bottom: 30%; right: 0%; animation-duration: 33s; animation-delay: 8s; } /* Нова фігура */
+
+        @keyframes moveShapes {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            25% { transform: translate(80px, -100px) scale(1.1) rotate(25deg); }
+            50% { transform: translate(-50px, 120px) scale(1.2) rotate(-30deg); }
+            75% { transform: translate(90px, -60px) scale(1.15) rotate(12deg); }
+            100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+        }
+
+        /* --- Загальні стилі для секцій контенту --- */
+        section {
+            padding: 50px 35px; /* Більші внутрішні відступи */
+            margin: 25px; /* Зовнішні відступи для секцій */
+            background-color: var(--tiktok-section-bg);
+            border-radius: var(--border-radius-large);
+            box-shadow: 0 12px 35px var(--shadow-intensity-high);
             position: relative;
-            z-index: 2;
+            z-index: 1;
+            border: 2px solid rgba(255, 255, 255, 0.12); /* Виразна рамка */
+            overflow: hidden;
         }
 
-        .header-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        section h2 {
+            font-size: 2.8em; /* Оптимальний розмір заголовка */
+            color: var(--tiktok-blue);
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 7px rgba(37, 244, 238, 0.6);
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
 
-        header img {
-            max-width: 150px;
-            height: auto;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 15px rgba(135, 206, 235, 0.7));
+        section h2::after {
+            content: '';
+            display: block;
+            width: 100px; /* Оптимальна довжина підкреслення */
+            height: 5px; /* Товщина підкреслення */
+            background: var(--gradient-secondary);
+            margin: 20px auto 0;
+            border-radius: 5px;
+            animation: stretchLine 4s infinite alternate;
+        }
+
+        @keyframes stretchLine {
+            0% { width: 70px; transform: translateX(-15px); }
+            50% { width: 110px; transform: translateX(15px); }
+            100% { width: 70px; transform: translateX(-15px); }
+        }
+
+        /* --- Хедер сторінки --- */
+        header {
+            text-align: center;
+            padding: 60px 35px; /* Збільшені відступи */
+            background: var(--gradient-primary);
+            border-bottom: 10px solid var(--tiktok-blue);
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 var(--border-radius-large) var(--border-radius-large);
+            box-shadow: 0 15px 40px var(--shadow-intensity-high);
+            animation: headerEntrance var(--transition-duration-slow) ease-out forwards;
+        }
+
+        @keyframes headerEntrance {
+            0% { transform: translateY(-100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .logo {
+            max-width: 220px; /* Оптимальний розмір логотипу */
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 18px rgba(0,0,0,0.9));
+            animation: bounceIn 1.8s ease-out forwards;
+            cursor: pointer;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.2); opacity: 0; }
+            70% { transform: scale(1.15); opacity: 1; }
+            100% { transform: scale(1); }
         }
 
         header h1 {
-            font-family: 'Oswald', sans-serif;
-            color: var(--accent-color-light);
+            font-size: 4.5em; /* Оптимальний розмір заголовка */
+            color: var(--tiktok-light-text);
             margin: 0;
-            font-size: 3.5em;
-            text-transform: uppercase;
+            text-shadow: 5px 5px 10px var(--shadow-intensity-high);
+            animation: fadeInDown 2s ease-out forwards;
             letter-spacing: 3px;
-            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+            line-height: 1.1;
+            font-weight: 900;
         }
 
-        .subheader-text {
-            color: var(--text-light);
-            font-size: 1.2em;
-            margin-top: 10px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-            max-width: 800px;
-            text-align: center;
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-70px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
-        nav {
-            background-color: var(--translucent-dark);
-            padding: 10px 0;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.1em;
-            text-transform: uppercase;
-            padding: 5px 10px;
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-            border-radius: 5px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
-        }
-
-        nav ul li a:hover {
-            background-color: var(--accent-color-light);
-            color: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        section {
-            background-color: var(--translucent-secondary);
-            padding: 30px;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease;
-        }
-
-        section:hover {
-            transform: translateY(-5px);
-        }
-
-        h2, h3 {
-            font-family: 'Oswald', sans-serif;
-            color: var(--accent-color-light);
-            text-transform: uppercase;
-            border-bottom: 2px solid var(--accent-color-light);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-size: 2.2em;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
-        }
-
-        h3 {
-            font-size: 1.8em;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        p, ul, ol {
-            color: var(--text-light);
-            margin-bottom: 15px;
-        }
-
-        ul, ol {
-            padding-left: 25px;
-        }
-
-        ul li, ol li {
-            margin-bottom: 8px;
-        }
-
-        .table-container {
-            margin-top: 20px;
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            background-color: var(--translucent-primary-dark-strong);
-        }
-
-        table th, table td {
-            border: 1px solid var(--border-color);
-            padding: 12px;
-            text-align: left;
-            color: var(--text-light);
-        }
-
-        table th {
-            background-color: var(--accent-color-dark);
-            color: var(--text-light);
-            font-family: 'Oswald', sans-serif;
-            text-transform: uppercase;
-            font-size: 0.9em;
-        }
-
-        table tr:nth-child(even) {
-            background-color: rgba(38, 38, 48, 0.75);
-        }
-
-        table tr:hover {
-            background-color: rgba(48, 48, 58, 0.85);
-        }
-
-        details {
-            background-color: var(--translucent-light-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: box-shadow 0.3s ease;
-        }
-
-        details:hover {
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-        }
-
-        summary {
-            font-family: 'Oswald', sans-serif;
-            padding: 15px 20px;
-            cursor: pointer;
-            outline: none;
-            font-size: 1.3em;
-            color: var(--accent-color-light);
-            background-color: var(--translucent-secondary);
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-        }
-
-        summary:hover {
-            background-color: rgba(48, 48, 58, 0.85);
-        }
-
-        summary::-webkit-details-marker {
-            display: none;
-        }
-
-        summary::after {
-            content: '+';
-            font-size: 1.5em;
-            margin-left: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        details[open] summary::after {
-            content: '-';
-            transform: rotate(0deg);
-        }
-
-        details[open] summary {
-            border-bottom: 1px solid var(--border-color);
-            border-radius: 5px 5px 0 0;
-        }
-
-        details .content {
-            padding: 20px;
-            background-color: var(--translucent-dark);
-            border-radius: 0 0 5px 5px;
-        }
-
-        .image-center {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .image-center img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
-        }
-
-        .staff-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+        header p {
+            font-size: 1.6em; /* Оптимальний розмір підзаголовка */
+            color: rgba(255, 255, 255, 0.95);
             margin-top: 25px;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeIn 2.3s ease-out forwards;
+            font-weight: 500;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
         }
 
-        .staff-member.gs-zgs {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* --- Секція профілю Darinka03GTA --- */
+        .profile-section {
+            background-color: var(--tiktok-section-bg);
+            padding: 60px 35px;
             text-align: center;
-            background-color: rgba(38, 38, 48, 0.8);
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: var(--border-radius-large);
+            margin-top: -60px; /* Наїзд на хедер */
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 18px 45px var(--shadow-intensity-high);
+            border: 3px solid rgba(255, 255, 255, 0.15);
+            animation: slideInUp 1.8s ease-out forwards;
         }
 
-        .staff-member.gs-zgs:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+        @keyframes slideInUp {
+            0% { transform: translateY(120px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
         }
 
-        .staff-member.gs-zgs .main-photo {
-            display: none;
-        }
-
-        .staff-member.gs-zgs .circle-avatar-container {
-            width: 120px;
-            height: 120px;
+        .profile-pic {
+            width: 200px; /* Оптимальний розмір аватара */
+            height: 200px;
             border-radius: 50%;
-            overflow: hidden;
-            border: 3px solid var(--accent-color-light);
-            box-shadow: 0 0 12px rgba(135, 206, 235, 0.6);
-            margin-bottom: 15px;
-        }
-
-        .staff-member.gs-zgs .circle-avatar-container img {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
+            border: 8px solid var(--tiktok-red); /* Товста рамка */
+            box-shadow: 0 0 50px rgba(254, 44, 85, 0.9); /* Яскраве світіння */
+            margin-bottom: 30px;
+            transition: transform var(--transition-duration-medium) ease, border-color var(--transition-duration-medium) ease, box-shadow var(--transition-duration-medium) ease;
+            cursor: pointer;
+            animation: pulseProfile 3.5s infinite alternate;
+            outline: 3px solid transparent; /* Для ефекту обведення */
+            outline-offset: 5px;
         }
 
-        .staff-member.gs-zgs h4 {
-            color: var(--accent-color-light);
-            margin-top: 0;
-            margin-bottom: 5px;
-            font-size: 1.3em;
-            font-family: 'Oswald', sans-serif;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        .profile-pic:hover {
+            transform: scale(1.1) rotate(10deg);
+            border-color: var(--tiktok-blue);
+            box-shadow: 0 0 70px rgba(37, 244, 238, 1);
         }
 
-        .staff-member.gs-zgs p {
-            color: var(--text-muted);
-            margin: 0;
-            font-size: 1.1em;
+        @keyframes pulseProfile {
+            0% { box-shadow: 0 0 35px rgba(254, 44, 85, 0.7); }
+            50% { box-shadow: 0 0 60px rgba(254, 44, 85, 1.2); }
+            100% { box-shadow: 0 0 35px rgba(254, 44, 85, 0.7); }
         }
 
-        .admin-avatars-grid {
+        .profile-name {
+            font-size: 3.2em; /* Оптимальний розмір ніку */
+            font-weight: 800;
+            color: var(--tiktok-light-text);
+            margin-bottom: 12px;
+            text-shadow: 3px 3px 6px var(--shadow-intensity-high);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .profile-bio {
+            color: var(--tiktok-grey-text);
+            font-size: 1.2em; /* Оптимальний розмір тексту біо */
+            margin-bottom: 35px;
+            max-width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            font-weight: 400;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .follow-button {
+            display: inline-block;
+            padding: 18px 45px; /* Оптимальний розмір кнопки */
+            background-color: var(--tiktok-red);
+            color: var(--tiktok-light-text);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 40px; /* Округлість */
+            font-size: 1.4em; /* Оптимальний розмір тексту кнопки */
+            transition: background-color var(--transition-duration-medium) ease, transform var(--transition-duration-medium) ease, box-shadow var(--transition-duration-medium) ease;
+            box-shadow: 0 10px 28px rgba(254, 44, 85, 0.8);
+            animation: glowButton 2.8s infinite alternate;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .follow-button:hover {
+            background-color: #ff5277; /* Трохи світліший на hover */
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(254, 44, 85, 1);
+        }
+
+        @keyframes glowButton {
+            0% { box-shadow: 0 10px 28px rgba(254, 44, 85, 0.8); }
+            50% { box-shadow: 0 10px 40px rgba(254, 44, 85, 1.2); }
+            100% { box-shadow: 0 10px 28px rgba(254, 44, 85, 0.8); }
+        }
+
+        /* --- Розділи контенту (Історія, Хайлайти) --- */
+        .content-section p {
+            background-color: var(--tiktok-element-bg);
+            padding: 22px;
+            border-radius: var(--border-radius-small);
+            margin-bottom: 25px;
+            color: var(--tiktok-grey-text);
+            font-size: 1.1em; /* Оптимальний розмір тексту */
+            text-align: justify;
+            box-shadow: 0 5px 12px var(--shadow-intensity-medium);
+            transition: background-color var(--transition-duration-fast) ease, transform var(--transition-duration-fast) ease, border-left var(--transition-duration-fast) ease;
+            border-left: 6px solid var(--tiktok-red); /* Декоративна лінія зліва */
+        }
+        .content-section p:hover {
+            background-color: #282828;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px var(--shadow-intensity-high);
+            border-left-color: var(--tiktok-blue); /* Зміна кольору лінії на hover */
+        }
+
+        /* --- Галерея зображень --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); /* Оптимальний розмір колонок */
+            gap: 20px; /* Проміжки між зображеннями */
+            margin-top: 30px;
+            padding: 25px;
+            background-color: var(--tiktok-element-bg);
+            border-radius: var(--border-radius-large);
+            box-shadow: inset 0 0 25px var(--shadow-intensity-high); /* Внутрішня тінь */
+            border: 2px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 200px; /* Оптимальна висота зображень */
+            object-fit: cover;
+            border-radius: var(--border-radius-small);
+            box-shadow: 0 8px 22px var(--shadow-intensity-high);
+            transition: transform var(--transition-duration-medium) ease, border var(--transition-duration-medium) ease, box-shadow var(--transition-duration-medium) ease;
+            border: 5px solid transparent;
+            cursor: pointer;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.1) rotate(4deg);
+            border: 5px solid var(--tiktok-red);
+            box-shadow: 0 12px 30px rgba(254, 44, 85, 0.7);
+        }
+
+        /* --- Посилання на MonoBank --- */
+        .monobank-link {
+            display: block;
+            text-align: center;
+            margin: 45px auto; /* Оптимальні відступи */
+            font-size: 1.4em; /* Оптимальний розмір тексту */
+            color: #FF0050; /* Фірмовий колір Монобанку */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color var(--transition-duration-medium) ease, transform var(--transition-duration-medium) ease, background-color var(--transition-duration-medium) ease, box-shadow var(--transition-duration-medium) ease;
+            max-width: fit-content;
+            padding: 18px 38px; /* Оптимальні відступи */
+            border: 4px solid #FF0050;
+            border-radius: 40px;
+            background-color: rgba(255, 0, 80, 0.1);
+            box-shadow: 0 8px 20px rgba(255, 0, 80, 0.4);
+            animation: bounceIn 2s ease-out 0.8s forwards;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .monobank-link:hover {
+            color: var(--tiktok-light-text);
+            transform: translateY(-4px) scale(1.03);
+            background-color: #FF0050;
+            box-shadow: 0 12px 28px rgba(255, 0, 80, 0.8);
+        }
+
+        /* --- Секція заклику до дії --- */
+        .cta-section {
+            background-color: var(--tiktok-section-bg);
+            padding: 55px 35px;
+            text-align: center;
+            border-radius: var(--border-radius-large);
+            margin-top: 30px;
+            box-shadow: 0 15px 40px var(--shadow-intensity-high);
+            border: 3px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .cta-section h2 {
+            color: var(--tiktok-light-text);
+            text-shadow: 3px 3px 6px var(--shadow-intensity-high);
+            font-size: 2.8em; /* Оптимальний розмір заголовка */
+        }
+
+        .cta-section p {
+            font-size: 1.25em; /* Оптимальний розмір тексту */
+            color: var(--tiktok-grey-text);
+            margin-bottom: 35px;
+            max-width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button-main {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 20px 50px; /* Оптимальний розмір кнопки */
+            background: var(--gradient-secondary);
+            color: var(--tiktok-light-text);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 45px; /* Округлість */
+            font-size: 1.5em; /* Оптимальний розмір тексту кнопки */
+            transition: transform var(--transition-duration-medium) ease, box-shadow var(--transition-duration-medium) ease, background var(--transition-duration-medium) ease;
+            box-shadow: 0 15px 35px rgba(37, 244, 238, 0.8);
+            animation: pulseGlow 3s infinite alternate;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .cta-button-main:hover {
+            transform: translateY(-9px) scale(1.06);
+            box-shadow: 0 20px 45px rgba(37, 244, 238, 1.2);
+            background: linear-gradient(90deg, #00fff0, #00e0d0);
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 15px 35px rgba(37, 244, 238, 0.8); }
+            50% { box-shadow: 0 15px 48px rgba(37, 244, 238, 1.2); }
+            100% { box-shadow: 0 15px 35px rgba(37, 244, 238, 0.8); }
+        }
+
+        /* --- Футер сторінки --- */
+        footer {
+            text-align: center;
+            padding: 40px 30px;
+            background-color: var(--tiktok-dark-bg);
+            color: var(--tiktok-grey-text);
+            font-size: 1em;
+            border-top: 4px solid #282828;
+            border-radius: var(--border-radius-large) var(--border-radius-large) 0 0;
+            margin-top: 30px;
+            box-shadow: 0 -10px 25px var(--shadow-intensity-high);
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-links {
+            margin: 35px 0;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
+            gap: 25px; /* Оптимальні проміжки */
         }
 
-        .admin-avatar-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: rgba(38, 38, 48, 0.8);
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            width: 140px;
+        .social-links a {
+            color: var(--tiktok-blue);
+            text-decoration: none;
+            font-size: 1.2em; /* Оптимальний розмір тексту посилань */
+            padding: 16px 32px; /* Оптимальні відступи */
+            border: 3px solid var(--tiktok-blue);
+            border-radius: 35px;
+            transition: background-color var(--transition-duration-medium) ease, color var(--transition-duration-medium) ease, transform var(--transition-duration-medium) ease, box-shadow var(--transition-duration-medium) ease;
+            box-shadow: 0 5px 15px rgba(37, 244, 238, 0.4);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
         }
 
-        .admin-avatar-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+        .social-links a:hover {
+            background-color: var(--tiktok-blue);
+            color: var(--tiktok-dark-bg);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(37, 244, 238, 0.8);
         }
 
-        .admin-avatar-item img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--accent-color-light);
-            box-shadow: 0 0 12px rgba(135, 206, 235, 0.6);
+        footer p {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.7);
         }
 
-        .admin-avatar-item p {
-            margin-top: 10px;
-            color: var(--text-light);
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.1em;
-            text-align: center;
-        }
-
-        .google-sheet-embed {
-            margin-top: 20px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .google-sheet-embed iframe {
-            width: 100%;
-            height: 600px;
-            border: none;
-            display: block;
-        }
-
-        hr {
-            border: none;
-            border-top: 1px solid var(--border-color);
-            margin: 40px 0;
-        }
-
-        footer {
-            background-color: var(--translucent-dark);
-            color: var(--text-muted);
-            text-align: center;
-            padding: 25px 0;
-            margin-top: 50px;
-            border-top: 2px solid var(--accent-color-light);
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.4);
-            font-size: 0.95em;
-        }
-
+        /* --- Адаптивність (Responsive Design) --- */
         @media (max-width: 768px) {
-            .top-section-background {
-                height: 400px;
+            body {
+                padding: 0; /* Прибираємо зовнішній padding на мобільних */
             }
+            .container {
+                max-width: 100%;
+                border-radius: 0; /* Прибираємо заокруглення на мобільних */
+                box-shadow: none; /* Прибираємо тінь контейнера */
+                padding-bottom: 0;
+            }
+            section {
+                margin: 15px;
+                padding: 35px 20px; /* Зменшуємо padding секцій */
+                border-radius: var(--border-radius-medium); /* Менші заокруглення на мобільних */
+            }
+            header {
+                border-radius: 0;
+                padding: 40px 20px;
+                border-bottom: 8px solid var(--tiktok-blue);
+            }
+            .profile-section {
+                margin-top: -40px;
+                border-radius: var(--border-radius-medium);
+                padding: 40px 20px;
+            }
+            footer {
+                border-radius: 0;
+                padding: 30px 20px;
+            }
+
+            .logo {
+                max-width: 180px;
+            }
+            header h1 {
+                font-size: 3.2em;
+                letter-spacing: 1px;
+            }
+            header p {
+                font-size: 1.2em;
+            }
+            .profile-pic {
+                width: 160px;
+                height: 160px;
+                border: 6px solid var(--tiktok-red);
+            }
+            .profile-name {
+                font-size: 2.2em;
+                letter-spacing: 1px;
+            }
+            .profile-bio {
+                font-size: 1em;
+                line-height: 1.7;
+            }
+            .follow-button, .cta-button-main, .monobank-link, .social-links a {
+                padding: 14px 28px;
+                font-size: 1.1em;
+            }
+            section h2 {
+                font-size: 2.2em;
+                margin-bottom: 25px;
+            }
+            section h2::after {
+                width: 80px;
+                height: 4px;
+            }
+            .content-section p {
+                font-size: 1em;
+                padding: 18px;
+                margin-bottom: 20px;
+                border-left: 4px solid var(--tiktok-red);
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+                gap: 15px;
+                padding: 15px;
+            }
+            .gallery-grid img {
+                height: 150px;
+                border: 4px solid transparent;
+            }
+            .monobank-link {
+                margin: 35px auto;
+                font-size: 1.2em;
+                padding: 15px 30px;
+                border: 3px solid #FF0050;
+            }
+            .cta-section h2 {
+                font-size: 2.2em;
+            }
+            .cta-section p {
+                font-size: 1.1em;
+            }
+            .social-links {
+                gap: 20px;
+            }
+            .social-links a {
+                font-size: 1.05em;
+                padding: 12px 25px;
+                border: 2px solid var(--tiktok-blue);
+            }
+        }
+
+        @media (max-width: 480px) {
             header h1 {
                 font-size: 2.5em;
             }
-            .subheader-text {
+            header p {
                 font-size: 1em;
             }
-            nav ul li {
-                margin: 5px 10px;
-            }
-            section {
-                padding: 20px;
-            }
-            h2 {
+            .profile-name {
                 font-size: 1.8em;
             }
-            h3 {
-                font-size: 1.4em;
+            .profile-bio {
+                font-size: 0.9em;
             }
-            summary {
-                font-size: 1.1em;
+            .follow-button, .cta-button-main, .monobank-link, .social-links a {
+                padding: 12px 25px;
+                font-size: 0.95em;
             }
-            .staff-info {
-                grid-template-columns: 1fr;
+            section h2 {
+                font-size: 1.8em;
             }
-            .admin-avatar-item {
-                width: 120px;
+            .content-section p {
+                font-size: 0.9em;
             }
-            .admin-avatar-item img {
-                width: 100px;
-                height: 100px;
+            .gallery-grid {
+                grid-template-columns: 1fr; /* Одна колонка на дуже малих екранах */
+                padding: 10px;
             }
-            .staff-member.gs-zgs .circle-avatar-container {
-                width: 100px;
-                height: 100px;
+            .gallery-grid img {
+                height: 200px; /* Збільшити висоту зображень для однієї колонки */
+            }
+            .social-links {
+                flex-direction: column; /* Колонки для посилань */
+                gap: 10px;
+            }
+            .social-links a {
+                max-width: 80%; /* Щоб кнопки не були надто широкими */
+                margin: 0 auto;
             }
         }
     </style>
 </head>
 <body>
-    <div class="top-section-background">
-        <header>
-            <div class="header-content">
-                <img src="https://ukraine-gta.com.ua/images/main-img/logo.png" alt="Логотип UKRAINE GTA">
-                <h1>Посібник для Ігрових Помічників</h1>
-                <p class="subheader-text">Посібник адміністратора створений для допомоги в роботі адміністрації та надання актуальної інформації.</p>
-            </div>
-        </header>
-    </div>
-
-    <nav>
-        <ul>
-            <li><a href="#staff-info">Склад Адміністрації</a></li>
-            <li><a href="#who-is">Хто такий Ігровий Помічник та Адміністратор</a></li>
-            <li><a href="#behavior">Поведінка з гравцями</a></li>
-            <li><a href="#levels">Рівні адміністратора</a></li>
-            <li><a href="#report-rules">Правила відповідей на репорти</a></li>
-            <li><a href="#hierarchy">Ієрархія адміністрації</a></li>
-            <li><a href="#punishment">Форма видачі покарання</a></li>
-            <li><a href="#reward">Винагорода, власність та покарання</a></li>
-            <li><a href="#stress">Дії у стресовій ситуації</a></li>
-            <li><a href="#capabilities">Можливості та переваги</a></li>
-            <li><a href="#prohibitions">Заборони адміністрації</a></li>
-            <li><a href="#commands">Команди</a></li>
-        </ul>
-    </nav>
-
     <div class="container">
-        <section id="staff-info">
-            <h2><a href="#staff-info" style="color: inherit; text-decoration: none;">СКЛАД АДМІНІСТРАЦІЇ</a></h2>
-            <h3>Керівництво Адміністрації</h3>
-            <div class="staff-info">
-                <div class="staff-member gs-zgs">
-                    <div class="circle-avatar-container">
-                        <img src="https://ukraine-gta.com.ua/images/game/skins/300x280/bc03f041-bfd4-4e21-9720-87ac522ecd06.webp" alt="Аватар Олександра Нестеровича">
-                    </div>
-                    <h4>Олександр Нестерович</h4>
-                    <p>Керівник Адміністрації</p>
-                </div>
-                <div class="staff-member gs-zgs">
-                    <div class="circle-avatar-container">
-                        <img src="https://ukraine-gta.com.ua/images/game/skins/300x280/f4d04f1f-9f6d-4e66-9c51-d61e68869611.webp" alt="Аватар Валерії Савченко">
-                    </div>
-                    <h4>Валерія Савченко</h4>
-                    <p>Головний Адміністратор</p>
-                </div>
-                <div class="staff-member gs-zgs">
-                    <div class="circle-avatar-container">
-                        <img src="https://ukraine-gta.com.ua/images/game/skins/300x280/e7ba0b63-d920-4a09-92f3-b5b2aea1ceda.webp" alt="Аватар Сергія Голда">
-                    </div>
-                    <h4>Сергій Голд</h4>
-                    <p>Зам.Головного Адміністратора</p>
-                </div>
+        <div class="tiktok-bg-shapes">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <header>
+            <img src="https://ukraine-gta.com.ua/images/main-img/logo.png" alt="Логотип Ukraine GTA" class="logo">
+            <h1>UKRAINE GTA</h1>
+            <p>Ваш портал до епічних пригод, неперевершених емоцій та справжніх зв'язків в українському віртуальному світі!</p>
+        </header>
+
+        <section class="profile-section">
+            <img src="https://cdn.imgpile.com/f/CPEccEz_xl.jpg" alt="Профільне фото Darinka03GTA" class="profile-pic">
+            <h2 class="profile-name">@DARINKA03GTA</h2>
+            <p class="profile-bio">
+                Привіт, мої любі підписники та майбутні друзі! Я Дарина, відома вам як darinka03gta – ваша пристрасна провідниця у світ неймовірних пригод в Ukraine GTA! Моя головна мета — це створення захоплюючого та якісного контенту для TikTok, де я ділюся своїми епічними геймерськими моментами, показую найцікавіші локації українських міст у грі, розкриваю таємниці успішних місій та просто живу на повну, ділячись позитивом!
+                <br><br>
+                Я безмежно обожнюю спілкуватися з вами, надихати на нові звершення та показувати, наскільки багатогранним і захоплюючим може бути віртуальний світ, коли він наповнений українським колоритом та справжніми емоціями. Кожен ваш лайк, коментар та підписка – це величезна мотивація для мене створювати ще більше якісного контенту та відкривати нові горизонти! Я завжди відкрита до ваших ідей та готова до нових викликів, щоб наш контент був ще цікавішим!
+                <br><br>
+                Наразі я щасливо заручена з моїм коханим Павлом Дідусем, і разом ми не лише будуємо світле та щасливе майбутнє, а й продовжуємо творити нові легенди в ігровому світі Ukraine GTA! Наша історія кохання почалася саме тут, на цих віртуальних просторах, і це є найкращим доказом того, що справжні, глибокі зв'язки та щирі почуття можуть народжуватися навіть у віртуальному просторі, коли його наповнюють відкриті та позитивні люди. Приєднуйтесь до моєї великої родини – разом ми непереможна команда, повна драйву, креативу та безмежної позитивної енергії! Чекаю на вас у TikTok та на серверах Ukraine GTA, щоб разом створювати нові історії!
+            </p>
+            <a href="https://www.tiktok.com/@darinka03gta" target="_blank" class="follow-button">
+                🚀 ПІДПИСАТИСЯ НА МІЙ TIKTOK! 💖
+            </a>
+        </section>
+
+        <section class="content-section">
+            <h2>ЧОМУ UKRAINE GTA — ЦЕ МОЯ ПРИСТРАСТЬ? МОЯ ІСТОРІЯ!</h2>
+            <p>
+                Для мене Ukraine GTA – це не просто чергова комп'ютерна гра, це цілий всесвіт, який став невід'ємною частиною мого життя! Це місце, де оживають знайомі вулиці наших рідних міст – **Києва, Харкова, Дніпра**, а також таких відомих місць як **Бориспіль** та **Конча-Заспа**. Де кожен куточок просякнутий справжнім українським духом, а архітектура та деталізоване оточення переносять тебе у світ, який здається неймовірно реальним. Я пам'ятаю, як вперше зайшла на сервер і була абсолютно вражена рівнем деталізації, реалістичними квестами, які змушують тебе думати та діяти, а також, що найважливіше, неймовірною дружелюбністю та підтримкою від спільноти гравців.
+            </p>
+            <p>
+                Саме тут, у Ukraine GTA, я зустріла величезну кількість класних людей, які з часом стали моїми справжніми друзями. Ми разом проходили складні місії, брали участь у захопливих івентах, які організують розробники, сміялися до сліз над кумедними ситуаціями та будували грандіозні плани щодо розвитку наших ігрових персонажів та віртуального бізнесу. Це місце, де ти ніколи не почуваєшся самотнім, адже завжди знайдеться хтось, хто готовий допомогти, поспілкуватися або просто скласти компанію у віртуальному світі.
+            </p>
+            <p>
+                І так, саме завдяки Ukraine GTA я познайомилася зі своїм коханим Павлом Дідусем! Наше знайомство відбулося на одному з наймасштабніших ігрових івентів, де ми обидва були захоплені однією, здавалося б, непереможною місією. Наше спільне прагнення до перемоги, взаємодопомога та підтримка одне одного стали тією іскрою, яка розпалила справжні почуття. Ми годинами проводили час разом не лише у грі, обговорюючи стратегії та майбутні оновлення, але й поза нею, ділячись мріями, планами та просто насолоджуючись спілкуванням. Наше спільне захоплення перетворилося на щось більше, і тепер ми щаслива заручена пара, яка доводить, що справжні, глибокі зв'язки та щире кохання можуть народжуватися навіть у віртуальному світі, коли його наповнюють щирі, відкриті та позитивні люди! Ukraine GTA дарує не тільки розваги, а й реальні можливості знайти "своїх" людей, свою долю.
+            </p>
+            <p>
+                Я запрошую кожного з вас приєднатися до цієї унікальної української ігрової спільноти. Це не просто гра, це велика родина, яка об'єднує тисячі гравців по всій Україні та за її межами. Це місце, де ви можете відпочити від повсякденних турбот, реалізувати свої фантазії, знайти нових друзів і навіть, можливо, зустріти свою другу половинку. Приєднуйтесь до нас і відчуйте цю неймовірну енергію, цей драйв та позитив, який панує на наших серверах! Тут кожен знайде своє місце під сонцем і створить свою унікальну, незабутню історію, як це сталося зі мною! Чекаємо саме на тебе!
+            </p>
+        </section>
+
+        <section class="content-section">
+            <h2>МОЇ НАЙЯСКРАВІШІ МОМЕНТИ ТА ЕПІЧНІ ХАЙЛАЙТИ!</h2>
+            <p>
+                Ця галерея – це лише невелика частина моїх найулюбленіших моментів та емоцій, які я пережила як у віртуальному світі Ukraine GTA, так і в реальному житті, яке тісно пов'язане з цією грою. Тут ви побачите яскраві та динамічні кадри з гри, де ми з Павлом виконували найскладніші місії, досліджували найпотаємніші куточки українських міст, брали участь у масштабних івентах та просто насолоджувалися атмосферою свободи та пригод.
+                <br><br>
+                А також я додала сюди моменти з нашого реального життя, які стали можливими саме завдяки нашій спільній пристрасті до Ukraine GTA. Кожна фотографія – це цінний спогад, це вибух емоцій, це частина моєї особистої історії, якою я з радістю та гордістю ділюся з вами! Я сподіваюся, що ці кадри надихнуть вас на власні пригоди! Натисніть на фото, щоб розглянути їх ближче та зануритися в наш унікальний вайб!
+            </p>
+            <div class="gallery-grid">
+                <img src="https://ukraine-gta.com.ua/images/pages/main/gallery/@2x/6.webp" alt="Darinka03GTA та Павло - ігровий момент у місті">
+                <img src="https://ukraine-gta.com.ua/images/pages/main/gallery/@2x/1.webp" alt="Дарина та Павло - щасливий момент поза грою">
+                <img src="https://ukraine-gta.com.ua/images/pages/main/gallery/@2x/7.webp" alt="Darinka03GTA в дії - ігрові перемоги">
+                <img src="https://ukraine-gta.com.ua/images/pages/main/gallery/@2x/5.webp" alt="Логотип Ukraine GTA на тлі ігрового світу">
+                <img src="https://ukraine-gta.com.ua/images/pages/main/gallery/@2x/3.webp" alt="Darinka03GTA - життєвий кадр, посмішка">
+                <img src="https://ukraine-gta.com.ua/images/pages/main/gallery/@2x/4.webp" alt="Завантажувальний екран Ukraine GTA - яскравий дизайн">
             </div>
+            <p style="text-align: center; margin-top: 35px; font-style: italic; color: var(--tiktok-blue); font-weight: 500;">
+                Не забувайте, що ще більше неймовірних фото, динамічних відео та ексклюзивного контенту ви завжди знайдете на моєму TikTok-каналі! Підписуйтесь, щоб не пропустити нічого!
+            </p>
         </section>
-        <hr>
 
-        <section id="who-is">
-            <h2><a href="#who-is" style="color: inherit; text-decoration: none;">Хто такий Ігровий Помічник та Адміністратор?</a></h2>
-            <p>Ігровий Помічник - це першого рівня є NonRP персонажем, який може перебувати в ігровому світі нарівні зі звичайними гравцями, виконувати роботу, але водночас зобов'язаний реагувати на репорти та допомагати гравцям.</p>
-            <p>Адміністратор - це особа, яка відповідає за нагляд і модерацію ігрового процесу. Адміністратор сервера контролює порядок і запобігає порушенням правил.</p>
+        <a href="https://send.monobank.ua/jar/jRaWx7jvV" target="_blank" class="monobank-link">
+            ✨ ПІДТРИМАТИ МЕНЕ ТА РОЗВИТОК МОГО КОНТЕНТУ НА MONOBANK! ✨
+        </a>
+
+        <section class="cta-section">
+            <h2>ГОТОВИЙ ДО НЕЗАБУТНІХ ПРИГОД? UKRAINE GTA ЧЕКАЄ САМЕ НА ТЕБЕ!</h2>
+            <p>
+                Це твій унікальний шанс стати повноцінною частиною найбільшої, найактивнішої та найдружелюбнішої української ігрової спільноти! Не зволікай, адже світ Ukraine GTA вже відкрив свої двері для нових героїв. Завантажуй гру прямо зараз і починай свою власну легендарну історію, яка буде сповнена драйву, незабутніх емоцій та неймовірних можливостей.
+                <br><br>
+                На тебе чекають нові друзі, з якими ти зможеш пройти крізь вогонь і воду, захопливі місії, які перевірять твою кмітливість та майстерність, унікальні локації, що відтворять красу українських міст, та безліч незабутніх моментів, які залишаться з тобою назавжди! Ми вже чекаємо на тебе, щоб разом творити історію Ukraine GTA! Приєднуйся до нас, і дозволь собі відчути справжню свободу віртуального світу!
+            </p>
+            <a href="https://ukraine-gta.com.ua/how-to-start" target="_blank" class="cta-button-main">
+                🎮 ДОЛУЧАЙСЯ ДО UKRAINE GTA ВЖЕ СЬОГОДНІ! 🚀
+            </a>
         </section>
-        <hr>
 
-        <section id="behavior">
-            <h2><a href="#behavior" style="color: inherit; text-decoration: none;">Як потрібно поводити себе з гравцями?</a></h2>
-            <p>Адміністратор сервера повинен допомагати гравцям у міру можливості, якщо питання поза його компетенцією він повинен дізнаватись відповіді у Куратора або інструктора.</p>
-            <p>Адміністратор сервера повинен відповідати на кожну скаргу до репорту.</p>
-            <p>Адміністратор повинен вести себе толерантно до інших гравців, звертатись на Ви та не мати ніяких суперечок з гравцями, які можуть призвести до конфлікту, урегульовувати всі суперечки шляхом альтернативних виходів з ситуацій.</p>
-        </section>
-        <hr>
-
-        <section id="levels">
-            <h2><a href="#levels" style="color: inherit; text-decoration: none;">Які є рівні адміністратора та їх посадові обов'язки?</a></h2>
-            <details open>
-                <summary>Ігровий помічник</summary>
-                <div class="content">
-                    <ul>
-                        <li>Відповіді на репорт, які допомагають гравцям у подальшому розвитку, вирішення конфліктних ситуацій;</li>
-                        <li>Контроль VIP-чату;</li>
-                        <li>Надання чітких та повноцінних відповідей;</li>
-                        <li>Контроль за порядком на сервері;</li>
-                        <li>Контроль за дотриманням правил сервера гравцями;</li>
-                        <li>Слідкувати за гравцями на яких надходити скарга по репорту, якщо зафіксовано порушення передавати старшій адміністрації.</li>
-                    </ul>
-                </div>
-            </details>
-
-            <details>
-                <summary>Модератор</summary>
-                <div class="content">
-                    <ul>
-                        <li>Слідкувати за гравцями та видавати покарання;</li>
-                        <li>Контроль за чатом;</li>
-                        <li>Відповіді на питання репорту;</li>
-                        <li>Контроль за порядком на сервері;</li>
-                        <li>Контроль за дотриманням правил сервера гравцями;</li>
-                        <li>Розгляд скарг на без.організації.</li>
-                    </ul>
-                </div>
-            </details>
-
-            <details>
-                <summary>Старший модератор</summary>
-                <div class="content">
-                    <ul>
-                        <li>Слідкувати за гравцями та видавати покарання;</li>
-                        <li>Контроль за чатом;</li>
-                        <li>Відповіді на питання репорту;</li>
-                        <li>Контроль за порядком на сервері;</li>
-                        <li>Контроль за дотриманням правил сервера гравцями;</li>
-                        <li>Перевірка скарг на без.орг.</li>
-                    </ul>
-                </div>
-            </details>
-
-            <details>
-                <summary>Адміністратор</summary>
-                <div class="content">
-                    <ul>
-                        <li>Видача онлайн/офлайн покарань від імені молодшого складу;</li>
-                        <li>Допомога молодшого складу в адмініструванні та організації МП/РП та інше;</li>
-                        <li>Перевірка форумних розділів сервера загалом;</li>
-                        <li>Проведення заходів для гравців;</li>
-                        <li>Аналізувати відповіді на репорт, передавати помилки старшій адміністрації;</li>
-                        <li>Переглядати скарги на форумі, які були розглянуті молодшою адміністрацією. Помилки передавати старшій адміністрації.</li>
-                    </ul>
-                </div>
-            </details>
-
-            <details>
-                <summary>Старший адміністратор</summary>
-                <div class="content">
-                    <ul>
-                        <li>Контроль перевірки скарг на форумі;</li>
-                        <li>Займають переважно посади ГС/ЗГС Держ/Неоф;</li>
-                        <li>Контроль роботи слідкуючих за фракціями;</li>
-                        <li>Проведення івентів для гравців;</li>
-                        <li>Слідкувати за всією адміністрацією на рівні нижче.</li>
-                    </ul>
-                </div>
-            </details>
-        </section>
-        <hr>
-
-        <section id="report-rules">
-            <h2><a href="#report-rules" style="color: inherit; text-decoration: none;">Правила відповідей на репорти</a></h2>
-            <ol>
-                <li>Адміністратор при відповіді на репорт повинен розписати її надавши максимально розгорнуту відповідь, задля того, щоб надати максимально можливу допомогу;</li>
-                <li>Перед тим, як відповісти на репорт ігровий помічник повинен уважно прочитати питання гравця, а також ID гравця, чи тому надається відповідь;</li>
-                <li>Відповідь адміністратора повинна починатись з великої літери та не має містити граматичних чи орфографічних помилок. Якщо ж адміністратор припустив помилки, він повинен надати відповідь ще раз гравцю, в кінці додавши *;</li>
-                <li>У разі випадку, коли кількість символів у відповіді перевищує ліміт, дозволяється повторно надати відповідь дописавши ваш текст. Приклад: /pm Вітаю, заправити автомобіль Ви можете за допомогою евакуатор, викликавши його.... /pm ...Р(англ) - Виклик спец.служб або ж придбавши каністру на найближчій АЗС;</li>
-                <li>Адміністратор не може надавати відповіді по типу "Вітаю, ні", "Вітаю, цього зробити не можливо", "Вітаю, на жаль не можемо допомогти" а мати завжди альтернативу - Вітаю, даного автомобіля в нас немає в автосалоні але є BMW X5. Завжди потрібно переформулювати вашу думку в сторону допомоги гравцю, а не закриття репорту.</li>
-            </ol>
-        </section>
-        <hr>
-
-        <section id="hierarchy">
-            <h2><a href="#hierarchy" style="color: inherit; text-decoration: none;">Ієрархія адміністрації</a></h2>
-            <p><strong>Керівник UKRAINE GTA</strong> - керівник адміністрації всього UKRAINE GTA, виконує повний контроль над серверами UKRAINE GTA, має право вносити зміни в керівництво серверу. (Сергій Коваленко)</p>
-            <p><strong>Технічний спеціаліст</strong> - людина яка несе відповідальність за економіку серверу, основною діяльністю є робота з форумом та логами серверу. Підкоряється Керівнику та Засновникам UKRAINE GTA. (Максим Петрушка)</p>
-            <p><strong>Головний адміністратор</strong> - керівник адміністрації визначеного серверу, несе відповідальність за всі дії на сервері, контролює всі види життєзабезпечення серверу, має право набирати адміністрацію на свій розсуд, вносити корективи в склад старшої адміністрації, знімати адміністрацію за втратою довіри. Підкоряється Керівнику та Засновникам UKRAINE GTA. (Діана Скакун)</p>
-            <p><strong>Заступник головного адміністратора</strong> - є правою рукою головного адміністратора, має такі ж права в складі адміністрації як і головний адміністратор. Підкоряється Головному адміністратору, Керівнику, Засновникам UKRAINE GTA. (Машуля Громова)</p>
-            <p><strong>Куратор адміністрації</strong> - адміністратор, який слідкує за адміністрацією, також за відповідями на репорти. Має право зробити зауваження щодо відповіді, навіть керівництву. Підкорюється адміністрації вище починаючи з ЗГА. (Віталій Петришин)</p>
-            <p><strong>Головний слідкуючий за держ.орг.</strong> - адміністратор який відповідає за всі державні організації, її лідерів та заступників, має повноваження призначати та знімати лідерів організацій. Підкоряється всім адміністраторам вище починаючи з ЗГА. (Мартін Морган)</p>
-            <p><strong>Головний слідкуючий за неоф.орг</strong> - адміністратор який є керівником в сфері кланів на сервері, веде контроль поведінки кланівців, вирішує всі конфліктні ситуації між кланами, має право піднімати питання про заблокування клану. Підкоряється всім адміністраторам вище починаючи з ЗГА. (Дмитро Скакун)</p>
-            <p><strong>Заступник головного слідкуючого держ.орг</strong> - права рука головного слідкуючого, має такі ж повноваження та обов'язки як і головний слідкуючий. Підкоряється Головному слідкуючому та адміністрації вище починаючи з ЗГА. (Сергій Правда)</p>
-            <p><strong>Заступник головного слідкуючого неоф.орг</strong> - права рука головного слідкуючого, має такі ж повноваження як і головний слідкуючий. Підкоряється Головному слідкуючому та адміністрації вище починаючи з ЗГА. (Андрій Харріс)</p>
-        </section>
-        <hr>
-
-        <section id="punishment">
-            <h2><a href="#punishment" style="color: inherit; text-decoration: none;">Форма видачі покарання та зняття покарання</a></h2>
-            <h3>Правила видачі:</h3>
-            <p>Усі покарання Ви видаєте написавши форму в адмін чат; (стосується онлайн покарання). Оффлайн покарання - видаються через форми в групі адміністраторів;</p>
-            <p>Перед видачею покарання обов'язково перевірте чи є у Вас збережений відкат/фото порушення гравця. Докази зберігаєте протягом 7 днів;</p>
-            <p>Перед видачею покарання уважно переглядайте ID гравця, та в кінці вказуйте від кого видано // by нік;</p>
-            <p>Усі форми пишите без скорочених назв UG і т.д. Вірно буде: Порушення правил Ukraine GTA п.6.48.</p>
-
-            <h3>Видача онлайн покарання:</h3>
-            <p>pmute "ID" хв "причина" - видати мут гравцю приклад: pmute 32537 60 Образа гравців // by Петришин</p>
-            <p>jail "ID" хв "причина" - видати гравцю кпз; приклад: jail 32537 15 DM car // by Петришин</p>
-            <p>pban "ID" к-сть днів "причина" - видати гравцю бан приклад: pban 32537 30 Образа рідних // by Петришин</p>
-            <p>warn "ID" "причина" - видати гравцю варн приклад: warn 32537 DM in GZ // by Петришин</p>
-            <p>pkick "ID" "причина" - від'єднати гравця з сервера (видаємо лише у випадку фарм ЗП гравця, до 9+ звання - 2 кіка і наступний варн, для 9+ - 1 кік і наступний варн) приклад: pkick 32537 Фарм ЗП [1/2] // by Петришин</p>
-            <p>unwarn "ID" "Причина" - знятий варн гравцю. Приклад: unwarn 8387 Помилково</p>
-            <p>unmute "ID" - зняти мут гравцю.</p>
-            <p>unjail "ID" - випустити гравця з КПЗ.</p>
-
-            <h3>Видача та зняття оффлайн покарання:</h3>
-            <p>/offmute "ID" хв "причина" - видати оффлайн мут гравцю приклад: /offmute 32537 20 CapsLock // by Петришин</p>
-            <p>/jailoffline "ID" хв "причина" - видати оффлайн кпз гравцю приклад: /jailoffline 32537 30 FD // by Петришин</p>
-            <p>/pbanoffline "ID" к-сть днів "причина" - видати гравцю бан оффлайн приклад: /pbanoffline 32537 6000 Використання стороннього ПЗ // by Петришин</p>
-            <p>/offwarn "ID" "причина" - видати оффлайн бан гравцю приклад: /offwarn 32537 FD in GZ // by Петришин</p>
-            <p>/offunwarn "ID" "причина" - знятий оффлайн попередження гравцю. приклад: /offunwarn 8387 Помилкова видача покарання</p>
-            <p>/offunmute "ID" - зняти оффлайн мут гравцю</p>
-            <p>/unban "ID" - зняти блокування гравцю</p>
-            <p>/offunjail "ID" - випустити оффлайн КПЗ гравця.</p>
-        </section>
-        <hr>
-
-        <section id="reward">
-            <h2><a href="#reward" style="color: inherit; text-decoration: none;">Винагорода, власність та покарання</a></h2>
-            <h3>За що можна отримати винагороду?</h3>
-            <p>За активну працю, гарний онлайн, велику кількість репортів, адміністратор може отримати премію або навіть підвищення раніше, ніж зазвичай.</p>
-            <p>Винагорода є за адміністратора тижня та місяця. У вигляді карбованців чи а-койнів.</p>
-
-            <h3>За що можна отримати покарання?</h3>
-            <p>Адміністратор, який не виконує вказівки старшої адміністрації, порушує регламент, правила адміністрації, неадекватна поведінка, дуже часто допускає помилки про які йому було повідомлено, порушення загальних правил, теж визначається покаранням.</p>
-
-            <h3>Що заборонено адміністратору мати у власності?</h3>
-            <p>Заборонено мати у власності будинок, квартиру та бізнес. Кожна людина, яка встає на посаду Ігрового Помічника зобов'язана продати, або ж передати та бути Ігровим Помічником вже без наявних взаємодій з економікою.</p>
-        </section>
-        <hr>
-
-        <section id="stress">
-            <h2><a href="#stress" style="color: inherit; text-decoration: none;">Як діяти у стресовій ситуації, якщо не знаєш інформацію та куди звертатися?</a></h2>
-            <p>Якщо виникає ситуація, де вам щось не зрозуміло - не потрібно панікувати. Ви ігровий помічник, ви не можете все одразу запам'ятати і вивчити, маєте це розуміти, за це вас ніхто сварити не буде. Перевірте список адміністраторів в мережі командою /admins, а потім напишіть в адмін чат, що потребуєте допомоги від старших. Завжди можете звертатися до Куратора адміністрації чи інструктора.</p>
-        </section>
-        <hr>
-
-        <section id="capabilities">
-            <h2><a href="#capabilities" style="color: inherit; text-decoration: none;">Можливості та переваги. Посібник адміністратора</a></h2>
-            <p>Мати GM (God Mode) - це той мод за яким вас неможливо вбити та завадити вам виконувати свої обов'язки;</p>
-            <p>Переміщення по карті за допомогою камери на великій швидкості, або за рахунок сполучення клавіш CTRL + ПКМ по карті в два кліка;</p>
-            <p>Адміністратор може не мати на своєму рахунку VIP статус, але все одно має змогу слідкувати за VIP чатом;</p>
-            <p>Адміністратор будь-якого рівня кожен Pay Day отримує фіксовану заробітну плату;</p>
-            <p>Конфіденційна інформація, яка недоступна звичайним гравцям;</p>
-            <p>Адміністратор має прямий зв'язок з усією підтримкою на UKRAINE GTA, що допоможе вирішати свої власні або питання гравців в прискореному режимі.</p>
-            <p><strong>ВАЖЛИВО:</strong> Заборонено використовувати адмін. права у власних цілях.</p>
-            <p>Посібник адміністратора - створений для допомоги в роботі адміністрації та надання актуальної інформації. До нього має доступ лише адміністрація, і гравці його бачити не можуть та не мають. Це адміністративна інформація, розповсюдження якої заборонена. Інформація може бути будь-якого характеру, включаючи інформацію про бізнеси, авто, клани, команди, роботи та багато важливого, що може бути корисним для адміністрації, обов'язково з ним потрібно ознайомитись.</p>
-        </section>
-        <hr>
-
-        <section id="prohibitions">
-            <h2><a href="#prohibitions" style="color: inherit; text-decoration: none;">Заборони адміністрації</a></h2>
-            <p>Заборонено брати реальні кошти у гравців. (Покарання: Зняття + ЧСП.);</p>
-            <p>Категорично забороняється блатити. За блат з боку адміністрації - адміністратор знімається зі свого поста і слідом блокується. (В залежності від ситуації.);</p>
-            <p>Заборонено ображати один одного в будь-якій конференції в соц.мережі;</p>
-            <p>Заборонено вживати нецензурну лайку (мати, образи і тд) в будь-який чат;</p>
-            <p>Заборонено перебувати в будь-яких групах, пабликах тощо тематика яких "Продаж/купівля ігрових акаунтів GTA, МТА, CRMP";</p>
-            <p>Заборонено відповідати в будь-яких скаргах без поваги до гравця, порушення цього пункту – догана/зниження/зняття;</p>
-            <p>Заборонено втручання в РП процес (догана/попередження/зняття);</p>
-            <p>Заборонено набивати норму/відходити від комп'ютера без паузи (попередження/догана/зняття). Максимальна кількість хвилин АФК - 5 хвилин.</p>
-            <p>Заборонено виключати /rpadmins. Як виключення проведення перевірок від адміністрації (узгодити з ГА/ЗГА);</p>
-            <p>Заборонено під час зміненого нікнейму (/tempnickname) відповідати на репорт чи карати гравців;</p>
-            <p>Заборонено розповсюджувати конфіденційну інформацію про гравців чи адміністрацію;</p>
-            <p>Заборонено розповсюджувати будь-яку інформацію надану керівництвом яка не доступна для звичайних гравців;</p>
-            <p>Заборонено грубити/хамити проявляти агресію чи неповажно ставитися до гравців;</p>
-            <p>Заборонено перебувати на посадах на інших проєктах пов'язаних з GTA.</p>
-        </section>
-        <hr>
-
-        <section id="commands">
-            <h2><a href="#commands" style="color: inherit; text-decoration: none;">Команди та Біндери</a></h2>
-            <h3>Команди</h3>
-            <p>/pm &lt;UID&gt; - Надати відповідь на репорт</p>
-            <p>/inv - Стати невидимим</p>
-            <p>/admins - Список адміністрації онлайн</p>
-            <p>/pwarp &lt;UID&gt; - Телепорт до гравця</p>
-            <p>/resp &lt;UID&gt; - Телепорт гравця на респавн</p>
-            <p>/astats - Статистика за день</p>
-            <p>/adminmode - Інформація для адміністрації</p>
-            <p>/flip &lt;VID&gt; - Перевернути авто</p>
-            <p>/vget - Телепортувати авто до себе</p>
-            <p>/sp &lt;UID&gt; - Слідкувати за гравцем</p>
-            <p>/get &lt;UID&gt; - Телепортувати гравця до себе</p>
-            <p>/rpadmin - Вкл/викл надпис над головою</p>
-            <p>/killchat - Вкл/викл список вбивств</p>
-            <p>/atracer - Увімкнути/вимкнути трасування куль</p>
-            <p>/wartime - Переглянути список битв за бізнес</p>
-
-            <h3>Біндери</h3>
-            <p>bind 1 inv</p>
-            <p>bind 2 adminmode</p>
-            <p>bind 3 killchat</p>
-            <p>bind 4 admins</p>
-            <p>bind 5 leaders</p>
-            <p>bind 6 astats</p>
-            <p>bind 7 atracer</p>
-        </section>
-        <hr>
-
-        <section id="admin-panel">
-            <h2><a href="#admin-panel" style="color: inherit; text-decoration: none;">Адмін Панель</a></h2>
-            <p>На головній сторінці панельки Ви зможете переглянути: актуальну інформацію по виданих Вами покарань, Ваші адмін-коїни та адмін-магазин, а також актуальний перелік команд.</p>
-            <div class="image-center">
-                <img src="https://cdn.imgpile.com/f/4baXKcl_xl.png" alt="Адмін Панель">
+        <footer>
+            <div class="social-links">
+                <a href="https://t.me/devnews_ukrainegta" target="_blank">МАЙСТЕРНЯ РОЗРОБНИКІВ</a>
+                <a href="https://t.me/ukraine_gta_5" target="_blank">UKRAINE GTA 5 TELEGRAM</a>
+                <a href="https://forum.ukraine-gta.com.ua/" target="_blank">ФОРУМ UKRAINE GTA</a>
+                <a href="https://ukraine-gta.com.ua/" target="_blank">ОФІЦІЙНИЙ САЙТ UKRAINE GTA</a>
             </div>
-
-            <p>Пошук гравців - вводячи ID гравця, Ви можете переглянути інформацію про гравця, а саме: прокачка зброї, ліцензій, гроші, донат валюта та інша інформація.</p>
-            <div class="image-center">
-                <img src="https://cdn.imgpile.com/f/QXfksmv_xl.png" alt="Пошук гравців">
-            </div>
-
-            <p>Вкладка лідери - показує актуальну інформацію про лідерів/заступників в державних організаціях.</p>
-            <div class="image-center">
-                <img src="https://cdn.imgpile.com/f/CmsY9z8_xl.png" alt="Вкладка лідери">
-            </div>
-
-            <p>Адміни - показує актуальну інформацію про склад адміністрації, які є назначені в грі.</p>
-            <div class="image-center">
-                <img src="https://cdn.imgpile.com/f/ETCDXI4_xl.png" alt="Адміни">
-            </div>
-
-            <p>Організації - демонструють перелік фракцій на сервері, а також всіх працівників, які в ній присутні.</p>
-            <div class="image-center">
-                <img src="https://cdn.imgpile.com/f/0Vu15ne_xl.png" alt="Організації">
-            </div>
-
-            <p>Підтримка - показує Ігрових помічників, які назначені на посаді в грі.</p>
-            <div class="image-center">
-                <img src="https://cdn.imgpile.com/f/S08Zmio_xl.png" alt="Підтримка">
-            </div>
-
-            <p>Івенти - доступні для адміністрації 5+ рівня для проведення івент-заходів.</p>
-            <div class="image-center">
-                <img src="https://cdn.imgpile.com/f/kOWjnOk_xl.png" alt="Івенти">
-            </div>
-        </section>
+            <p>&copy; 2025 Ukraine GTA. Всі права захищені.</p>
+            <p>Розроблено з любов'ю та натхненням в Україні. 🇺🇦 Слава Україні!</p>
+        </footer>
     </div>
-
-    <footer>
-        <p>© 2025 Посібник для Ігрових Помічників. Всі права захищені.</p>
-    </footer>
 </body>
 </html>
